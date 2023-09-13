@@ -1,10 +1,41 @@
-<div class="container-div">
-    <h2>Web Sockets - POC</h2>
 
-    <button (click)="sendMessageToServer()">Send Messsage to Server</button>
+<h2 style="color: white;">Web Sockets - POC</h2>
 
-    <p> Data Coming From the Server : {{dataPoint}}</p>
+<button (click)="sendMessageToServer()">Send Messsage to Server</button>
 
-    <router-outlet></router-outlet>
+<p> Data Coming From the Server : {{dataPoint}}</p>
+
+<router-outlet></router-outlet>
+
+<div class="container responsive-grid">
+    <mat-card class="card-formatter-1">
+        <mat-card-header>
+          <mat-card-title>
+            Summary Statistics
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="mat-card-content-formatter">
+          <p>Number of Data Points  : {{getCount()}}</p>
+          <p>Average of Data Points : {{getAverage()}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          
+        </mat-card-actions>
+      </mat-card>
+      <mat-card class="card-formatter-2">
+        <mat-card-header>
+          <mat-card-title>
+            Data Visualization
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="mat-card-content-formatter">
+          
+        </mat-card-content>
+        <mat-card-actions>
+          
+        </mat-card-actions>
+      </mat-card>
 </div>
+
+
 
