@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { WebsocketService } from './services/websocket.service';
 import { environment } from 'src/environments/environment';
 
+import { Chart } from 'angular-highcharts';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,6 +15,25 @@ export class AppComponent {
   dataPoint : number;
   data:any[] = [];
   url : string;
+
+  lineChart = new Chart({
+    chart: {
+      type: 'line'
+    },
+    title: {
+      text: 'Close Prices'
+    },
+    credits: {
+      enabled: false
+    },
+    series: [
+      {
+        name: 'ABC',
+        type: 'line',
+        data: []
+      }
+    ]
+  });
   
 
   constructor(private wsService : WebsocketService){
@@ -23,6 +44,10 @@ export class AppComponent {
           let a = JSON.parse(data);
           this.dataPoint = a.result;
           this.data.push(a);
+
+          if(this.lineChart){
+            this.lineChart.addPoint(a.result)
+          }
           
         },
         err => {
@@ -45,6 +70,10 @@ export class AppComponent {
 
   getCount(){
     return this.data.length;
+  }
+
+  getOnlyResults(){
+    return this.data.map(item => item.result)
   }
 
 
