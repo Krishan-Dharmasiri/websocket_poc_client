@@ -76,5 +76,11 @@ export class AppComponent {
     return this.data.map(item => item.result)
   }
 
+  resetData(){
+    this.data = [];
+    // this.lineChart.removeSeries(0);
+    // this.lineChart.series[0].setData([]);
+  }
+
 
 }
